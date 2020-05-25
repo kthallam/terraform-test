@@ -33,7 +33,7 @@ output "subnetvalue2" {
   value = "${element(var.subnets, 1)}"
 }
 output "subnetvalue3" {
-  value = join(", ", ["test1", "test2", "test3"])
+  value = join(", ", ["test1", "test2", "test3", "test4"])
 }
 
 output "joined_subnet" {
