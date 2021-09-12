@@ -1,3 +1,45 @@
+provider "aws" {
+  region = "us-east-1"
+}
+
+
+resource "aws_security_group" "mediawiki-ec2-sg" {
+  name        = "mediawiki-ec2-sg"
+  description = "Allows http https and ssh access"
+  vpc_id      = "vpc-d5bb80af"
+
+  ingress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "TCP"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port   = 443
+    to_port     = 443
+    protocol    = "TCP"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "TCP"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
+
+
+
 variable subnets {
   type    = "list"
   default = ["abcd-123", "a-1234", "c-12345"]
