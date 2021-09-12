@@ -41,7 +41,7 @@ resource "aws_security_group" "mediawiki-ec2-sg" {
 
 
 variable subnets {
-  type    = "list"
+  type    = list
   default = ["abcd-123", "a-1234", "c-12345"]
 }
 
